@@ -29,23 +29,29 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(sizes.width, sizes.height)
 
-// Set time outside of the func, use let since value will change
-let time = Date.now();
+// Three.js way of tracking time: Clock
+const clock = new THREE.Clock()
 
 // Animations 
 const tick = () => {
 
-    // Ensure animation works same regardless of framerate
-    const currentTime = Date.now();
-    // Delta time is the time between the time and currentTime. This shows the difference in FR for different monitors
-    const deltaTime = currentTime - time;
-    time = currentTime;
-    // console.log(deltaTime);
+    // Ensure animation works same regardless of framerate w/ Clock
+    const elapsedTime = clock.getElapsedTime();
+    // console.log(elapsedTime);
     
     // Update objects
     // mesh.position.x -= 0.01;
     // mesh.position.y += 0.01;
-    mesh.rotation.y += 0.001 * deltaTime;
+    // mesh.rotation.y = elapsedTime * Math.PI * 2;
+
+    // Obj rotates in a circle
+    // mesh.position.y = Math.sin(elapsedTime);
+    // mesh.position.x = Math.cos(elapsedTime);
+
+    // Camera rotates in a circle
+    camera.position.y = Math.sin(elapsedTime);
+    camera.position.x = Math.cos(elapsedTime);
+    camera.lookAt(mesh.position);
 
     // Render
     renderer.render(scene, camera);
