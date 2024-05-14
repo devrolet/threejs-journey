@@ -28,4 +28,29 @@ const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
 renderer.setSize(sizes.width, sizes.height)
-renderer.render(scene, camera)
+
+// Set time outside of the func, use let since value will change
+let time = Date.now();
+
+// Animations 
+const tick = () => {
+
+    // Ensure animation works same regardless of framerate
+    const currentTime = Date.now();
+    // Delta time is the time between the time and currentTime. This shows the difference in FR for different monitors
+    const deltaTime = currentTime - time;
+    time = currentTime;
+    // console.log(deltaTime);
+    
+    // Update objects
+    // mesh.position.x -= 0.01;
+    // mesh.position.y += 0.01;
+    mesh.rotation.y += 0.001 * deltaTime;
+
+    // Render
+    renderer.render(scene, camera);
+
+    window.requestAnimationFrame(tick);
+}
+// Make sure you call the function. Otherwise the reqAniFrame func won't work
+tick();
