@@ -1,4 +1,8 @@
-import * as THREE from 'three'
+import './style.css';
+import * as THREE from 'three';
+import gsap from 'gsap';
+
+console.log(gsap);
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -30,13 +34,17 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height)
 
 // Three.js way of tracking time: Clock
-const clock = new THREE.Clock()
+// const clock = new THREE.Clock()
+
+// GSAP
+gsap.to(mesh.position, { duration: 1, delay: 1, x: 2 })
+gsap.to(mesh.position, { duration: 1, delay: 2, x: 0 })
 
 // Animations 
 const tick = () => {
 
     // Ensure animation works same regardless of framerate w/ Clock
-    const elapsedTime = clock.getElapsedTime();
+    // const elapsedTime = clock.getElapsedTime();
     // console.log(elapsedTime);
     
     // Update objects
@@ -49,9 +57,9 @@ const tick = () => {
     // mesh.position.x = Math.cos(elapsedTime);
 
     // Camera rotates in a circle
-    camera.position.y = Math.sin(elapsedTime);
-    camera.position.x = Math.cos(elapsedTime);
-    camera.lookAt(mesh.position);
+    // camera.position.y = Math.sin(elapsedTime);
+    // camera.position.x = Math.cos(elapsedTime);
+    // camera.lookAt(mesh.position);
 
     // Render
     renderer.render(scene, camera);
