@@ -23,9 +23,23 @@ const mesh = new THREE.Mesh(
 scene.add(mesh)
 
 /* Camera 
-    args(fov, aspect-ratio, near, far)
+    Perspective Camera: args(fov, aspect-ratio, near, far)
+    Orthographic Camera: args(left, right, top, bottom, near, far)
+        --Important to ensure canvas size is consistent, otherwise it's like rendering a square area into a rectangle canvas, objects will appear squished
+    
 */
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
+// const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
+
+// Prevent sizing issues by setting the aspect ratio
+const aspectRatio = sizes.width / sizes.height;
+console.log('Aspect Ratio: ', aspectRatio);
+const camera = new THREE.OrthographicCamera(
+    -1 * aspectRatio, 
+    1 * aspectRatio, 
+    1, 
+    -1, 
+    0.1, 
+    100 );
 camera.position.x = 2
 camera.position.y = 2
 camera.position.z = 2
