@@ -39,7 +39,27 @@ window.addEventListener('resize', () => {
 
     // Update renderer
     // renderer.setSize(sizes.width, sizes.height);
-})
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+});
+
+window.addEventListener('dblclick', () => {
+    // Prefix for Safari
+    const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement
+
+    if(!fullscreenElement) {
+        if(canvas.requestFullscreen) {
+            canvas.requestFullscreen();
+        } else if(canvas.webkitFullscreenElement) {
+            canvas.webkitRequestFullscreen();
+        }
+    } else {
+        if(document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if(document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }        
+    }
+});
 
 // Scene
 const scene = new THREE.Scene()
@@ -87,7 +107,8 @@ console.log('Orbit Controls: ', controls);
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
-renderer.setSize(sizes.width, sizes.height)
+renderer.setSize(sizes.width, sizes.height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 // Animate
 const clock = new THREE.Clock()
