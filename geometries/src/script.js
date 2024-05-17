@@ -1,6 +1,16 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import gsap from 'gsap'
+import GUI from 'lil-gui'
 
+// import * as dat from 'lil-gui'
+
+
+/***
+ * 
+ * Debug
+ */
+const gui = new GUI()
 /**
  * Base
  */
@@ -47,7 +57,7 @@ console.log(positionsArray);
 console.log(positionsAttribute);
 console.log(geometry);
 
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true })
+const material = new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: true })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
@@ -57,8 +67,7 @@ const sizes = {
     height: window.innerHeight
 }
 
-window.addEventListener('resize', () =>
-{
+window.addEventListener('resize', () => {
     // Update sizes
     sizes.width = window.innerWidth
     sizes.height = window.innerHeight
