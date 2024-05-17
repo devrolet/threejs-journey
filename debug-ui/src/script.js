@@ -1,6 +1,15 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import gsap from 'gsap'
+import GUI from 'lil-gui'
+
+// import * as dat from 'lil-gui'
+
+/**
+ * Debug
+ */
+
+const gui = new GUI();
 
 /**
  * Base
@@ -19,6 +28,18 @@ const material = new THREE.MeshBasicMaterial({ color: '#ff0000' })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
+// Adds GUI control for y axis. adding min/max/step as methods makes it more human readable in code
+gui
+    .add(mesh.position, 'y')
+    .min(-3)
+    .max(3)
+    .step(0.01)
+    .name('elevation')
+gui
+    .add(mesh, 'visible');
+
+gui
+    .add(material, 'wireframe')
 /**
  * Sizes
  */
