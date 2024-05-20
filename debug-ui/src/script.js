@@ -39,7 +39,20 @@ gui
     .add(mesh, 'visible');
 
 gui
-    .add(material, 'wireframe')
+    .add(material, 'wireframe');
+
+gui
+    .addColor(material, 'color')
+    // Note: Don't add the value from the GUI to code, results will vary. In order to get the correct color add the code below
+    .onChange((value) => {
+        // the resulting hex color in the console can be used to change material color
+        console.log('Hex Color Value: ', value.getHexString())
+    })
+
+// Deal with non-modified color in Three.js 
+
+
+
 /**
  * Sizes
  */
