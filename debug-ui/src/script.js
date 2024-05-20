@@ -3,14 +3,12 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import gsap from 'gsap'
 import GUI from 'lil-gui'
 
-// import * as dat from 'lil-gui'
-
 /**
  * Debug
  */
 
 const gui = new GUI();
-
+const debugObject = {}
 /**
  * Base
  */
@@ -23,8 +21,10 @@ const scene = new THREE.Scene()
 /**
  * Object
  */
+debugObject.color = '#002ada'
+
 const geometry = new THREE.BoxGeometry(1, 1, 1, 2, 2, 2)
-const material = new THREE.MeshBasicMaterial({ color: '#ff0000' })
+const material = new THREE.MeshBasicMaterial({ color: debugObject.color, wireframe: true })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
@@ -42,14 +42,29 @@ gui
     .add(material, 'wireframe');
 
 gui
-    .addColor(material, 'color')
-    // Note: Don't add the value from the GUI to code, results will vary. In order to get the correct color add the code below
-    .onChange((value) => {
-        // the resulting hex color in the console can be used to change material color
-        console.log('Hex Color Value: ', value.getHexString())
-    })
+    .addColor(debugObject, 'color')
+    // Deal with non-modified color in Three.js
+    .onChange(() => material.color.set(debugObject.color))
 
-// Deal with non-modified color in Three.js 
+debugObject.spin = () => {
+    gsap.to(mesh.rotation, { y: mesh.rotation.y + Math.PI * 2 })
+}
+gui.add(debugObject, 'spin')
+
+debugObject.subdivision = 2
+
+gui
+    .add(debugObject, 'subdivision')
+    .min(1)
+    .max(20)
+    .step(1)
+    .onFinishChange(() => {
+        mesh.geometry.dispose()
+        mesh.geometry = new THREE.BoxGeometry(
+            1,1,1,
+            debugObject.subdivision, debugObject.subdivision, debugObject.subdivision
+        )
+    })
 
 
 
