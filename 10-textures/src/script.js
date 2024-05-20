@@ -1,24 +1,59 @@
 import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-// import imageSource from '../static/textures/door/color.jpg';
+import colorSource from '../static/textures/door/color.jpg';
+import alphaSource from '../static/textures/door/alpha.jpg';
+import heightSource from '../static/textures/door/height.jpg';
+import normalSource from '../static/textures/door/normal.jpg';
+import ambientOcclusionSource from '../static/textures/door/ambientOcclusion.jpg';
+import metalnessSource from '../static/textures/door/metalness.jpg';
+import roughnessSource from '../static/textures/door/roughness.jpg';
+
 
 // console.log(imageSource)
 
 /**
  * Texture
  **/
-const image = new Image();
-const texture = new THREE.Texture(image);
-texture.colorSpace = THREE.SRGBColorSpace;
+const loadingManager = new THREE.LoadingManager()
 
-image.onload = () => {
-    
-    texture.needsUpdate = true;
-}
+// loadingManager.onStart = () => {
+//     console.log('onStart');
+// }
 
-image.src = '/textures/door/color.jpg';
+// loadingManager.onLoad = () => {
+//     console.log('onLoad');
+// }
 
+// loadingManager.onProgress = () => {
+//     console.log('onProgress');
+// }
+
+// loadingManager.onError = () => {
+//     console.log('onError');
+// }
+
+const textureLoader = new THREE.TextureLoader(loadingManager)
+const colorTexture = textureLoader.load(colorSource);
+const alphaTexture = textureLoader.load(alphaSource);
+const heightTexture = textureLoader.load(heightSource);
+const normalTexture = textureLoader.load(normalSource);
+const ambientOcclusionTexture = textureLoader.load(ambientOcclusionSource);
+const metalnessTexture = textureLoader.load(metalnessSource);
+const roughnessTexture = textureLoader.load(roughnessSource);
+
+colorTexture.colorSpace = THREE.SRGBColorSpace
+// colorTexture.repeat.x = 2;
+// colorTexture.repeat.y = 3;
+// colorTexture.wrapS = THREE.RepeatWrapping
+// colorTexture.wrapT = THREE.RepeatWrapping
+
+// colorTexture.offset.x = 0.5;
+// colorTexture.offset.y = 0.5;
+
+colorTexture.rotation = Math.PI * 0.25;
+colorTexture.center.x = 0.5;
+colorTexture.center.y = 0.5;
 
 // PBR = PHYSICALLY BASED RENDERING **VERY IMPORTANT**
 
@@ -35,7 +70,8 @@ const scene = new THREE.Scene()
  * Object
  */
 const geometry = new THREE.BoxGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({ map: texture })
+console.log('Geometry Attributes: ', geometry.attributes);
+const material = new THREE.MeshBasicMaterial({ map: colorTexture })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
