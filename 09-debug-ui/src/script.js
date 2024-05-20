@@ -3,6 +3,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import gsap from 'gsap'
 import GUI from 'lil-gui'
 
+// Lil GUI documentation: https://lil-gui.georgealways.com/
+
 /**
  * Debug
  */
