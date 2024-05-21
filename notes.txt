@@ -13,3 +13,8 @@ depthSegments: How many subdivisions on the z axis
 Segments control how many faces 
 1 = two triangles
 2 = eight triangles
+
+
+
+Mipmapping is a technique that consists of creating half a smaller version of a texture again and again until we get 1x1 texture
+Texture variations are sent to GPU, which chooses most appropriate version of the texture

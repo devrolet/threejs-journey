@@ -1,7 +1,7 @@
 import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import colorSource from '../static/textures/door/color.jpg';
+import colorSource from '../static/textures/minecraft.png';
 import alphaSource from '../static/textures/door/alpha.jpg';
 import heightSource from '../static/textures/door/height.jpg';
 import normalSource from '../static/textures/door/normal.jpg';
@@ -54,6 +54,11 @@ colorTexture.colorSpace = THREE.SRGBColorSpace
 colorTexture.rotation = Math.PI * 0.25;
 colorTexture.center.x = 0.5;
 colorTexture.center.y = 0.5;
+
+// If you use minFilter, you can set generateMipmaps to false to improve performance
+colorTexture.generateMipmaps = false
+colorTexture.minFilter = THREE.NearestFilter
+colorTexture.magFilter = THREE.NearestFilter
 
 // PBR = PHYSICALLY BASED RENDERING **VERY IMPORTANT**
 
