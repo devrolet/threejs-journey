@@ -31,7 +31,7 @@ matcapTexture.colorSpace = THREE.SRGBColorSpace
 /**
  * Objects
  */
-// Mesh Basic Material
+// MeshBasicMaterial
 // const material = new THREE.MeshBasicMaterial();
 // material.map = doorColorTexture
 // material.color = new THREE.Color('#f00');
@@ -43,13 +43,18 @@ matcapTexture.colorSpace = THREE.SRGBColorSpace
 // TODO: Sides can be FrontSide, BackSide, and DoubleSide
 // material.side = THREE.DoubleSide
 
-// Mesh Normal Material
+// MeshNormalMaterial
 // const material = new THREE.MeshNormalMaterial();
 // material.flatShading = true;
 
-// Mesh Matcap Material
-const material = new THREE.MeshMatcapMaterial()
-material.matcap = matcapTexture;
+// MeshMatcapMaterial
+// const material = new THREE.MeshMatcapMaterial()
+// material.matcap = matcapTexture;
+
+// MeshDepthMaterial
+const material = new THREE.MeshDepthMaterial();
+
+
 
 const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(0.5, 16, 16),

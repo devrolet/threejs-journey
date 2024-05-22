@@ -18,3 +18,13 @@ Segments control how many faces
 
 Mipmapping is a technique that consists of creating half a smaller version of a texture again and again until we get 1x1 texture
 Texture variations are sent to GPU, which chooses most appropriate version of the texture
+
+
+Create your own matcaps
+3D software
+Render a sphere in front of the camera in a square image
+
+2D software (like PS)
+Use soft brushes on a square image(bg) and paint where you want light reflections
+
+Online Tools
