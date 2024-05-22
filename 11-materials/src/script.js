@@ -1,7 +1,9 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import GUI from 'lil-gui';
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 
+console.log(RGBELoader);
 /**
  * 
  * Debug
@@ -79,8 +81,8 @@ matcapTexture.colorSpace = THREE.SRGBColorSpace
 
 // MeshStandardMaterial
 const material = new THREE.MeshStandardMaterial();
-material.metalness = 0.45;
-material.roughness = 0.65;
+material.metalness = 0.7;
+material.roughness = 0.2;
 
 gui.add(material, 'metalness').min(0).max(1).step(0.0001);
 gui.add(material, 'roughness').min(0).max(1).step(0.0001);
@@ -90,17 +92,31 @@ gui.add(material, 'roughness').min(0).max(1).step(0.0001);
  Lights
 */
 // Ambient Light
-const ambientLight = new THREE.AmbientLight(0xffffff, 1)
-scene.add(ambientLight);
+// const ambientLight = new THREE.AmbientLight(0xffffff, 1)
+// scene.add(ambientLight);
 
-const pointLight = new THREE.PointLight(0xffffff, 30);
-pointLight.position.x = 2;
-pointLight.position.y = 3;
-pointLight.position.z = 4;
+// const pointLight = new THREE.PointLight(0xffffff, 30);
+// pointLight.position.x = 2;
+// pointLight.position.y = 3;
+// pointLight.position.z = 4;
 
-// Remember: Multiple arg/obj can be added to scene.add();
-scene.add(pointLight)
+// // Remember: Multiple arg/obj can be added to scene.add();
+// scene.add(pointLight)
 
+/**
+ * ENVIRONMENT MAP
+ * 
+ * THIS IS HOW YOU ADD 360 IMG FILES AS BACKGROUND
+ */
+const rgbeLoader = new RGBELoader();
+rgbeLoader.load('./textures/environmentMap/2k.hdr', (environmentMap) => {
+    environmentMap.mapping = THREE.EquirectangularReflectionMapping;
+
+    // Adds the 360 img as the BG
+    scene.background = environmentMap
+    // Allows the background/lighting in the scene to reflect from the BG img
+    scene.environment = environmentMap
+});
 
 
 const sphere = new THREE.Mesh(
