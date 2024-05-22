@@ -51,8 +51,26 @@ matcapTexture.colorSpace = THREE.SRGBColorSpace
 // const material = new THREE.MeshMatcapMaterial()
 // material.matcap = matcapTexture;
 
-// MeshDepthMaterial
-const material = new THREE.MeshDepthMaterial();
+// // MeshDepthMaterial
+// const material = new THREE.MeshDepthMaterial();
+
+// MeshLambertMaterial - MUST HAVE LIGHTS TO BE VISIBLE
+const material = new THREE.MeshLambertMaterial();
+
+/** 
+ Lights
+*/
+// Ambient Light
+const ambientLight = new THREE.AmbientLight(0xffffff, 1)
+scene.add(ambientLight);
+
+const pointLight = new THREE.PointLight(0xffffff, 30);
+pointLight.position.x = 2;
+pointLight.position.y = 3;
+pointLight.position.z = 4;
+
+// Remember: Multiple arg/obj can be added to scene.add();
+scene.add(pointLight)
 
 
 
