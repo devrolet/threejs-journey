@@ -98,23 +98,23 @@ matcapTexture.colorSpace = THREE.SRGBColorSpace
 
 // MeshPhysicalMaterial TODO: Extends MeshNormalMaterial class (has all it's parent props and methods + it's own)
 const material = new THREE.MeshPhysicalMaterial();
-material.metalness = 1;
-material.roughness = 1;
+material.metalness = 0;
+material.roughness = 0;
 
-material.map = doorColorTexture
-material.aoMap = doorAmbientOcclusionTexture
-material.aoMapIntensity = 1;
+// material.map = doorColorTexture
+// material.aoMap = doorAmbientOcclusionTexture
+// material.aoMapIntensity = 1;
 
 
-material.metalnessMap = doorMetalnessTexture;
-material.roughnessMap = doorRoughnessTexture;
-material.normalMap = doorNormalTexture;
-material.normalScale.set(0.5, 0.5);
-material.transparent = true;
-material.alphaMap = doorAlphaTexture
+// material.metalnessMap = doorMetalnessTexture;
+// material.roughnessMap = doorRoughnessTexture;
+// material.normalMap = doorNormalTexture;
+// material.normalScale.set(0.5, 0.5);
+// material.transparent = true;
+// material.alphaMap = doorAlphaTexture
 
-gui.add(material, 'metalness').min(0).max(1).step(0.0001);
-gui.add(material, 'roughness').min(0).max(1).step(0.0001);
+// gui.add(material, 'metalness').min(0).max(1).step(0.0001);
+// gui.add(material, 'roughness').min(0).max(1).step(0.0001);
 
 // Clearcoat
 // material.clearcoat = 1;
@@ -133,14 +133,23 @@ gui.add(material, 'roughness').min(0).max(1).step(0.0001);
 // gui.addColor(material, 'sheenColor');
 
 // Iridescence
-material.iridescence = 1;
-material.iridescenceIOR = 1;
-material.iridescenceThicknessRange = [100, 800];
+// material.iridescence = 1;
+// material.iridescenceIOR = 1;
+// material.iridescenceThicknessRange = [100, 800];
 
-gui.add(material, 'iridescence').min(0).max(1).step(0.0001);
-gui.add(material, 'iridescenceIOR').min(1).max(2.333).step(0.0001);
-gui.add(material.iridescenceThicknessRange, '0').min(1).max(1000).step(1);
-gui.add(material.iridescenceThicknessRange, '1').min(1).max(1000).step(1);
+// gui.add(material, 'iridescence').min(0).max(1).step(0.0001);
+// gui.add(material, 'iridescenceIOR').min(1).max(2.333).step(0.0001);
+// gui.add(material.iridescenceThicknessRange, '0').min(1).max(1000).step(1);
+// gui.add(material.iridescenceThicknessRange, '1').min(1).max(1000).step(1);
+
+// Transmission
+material.transmisson = 1;
+material.ior = 1.5
+material.thickness = 0.5
+
+gui.add(material, 'transmission').min(0).max(1).step(0.0001);
+gui.add(material, 'ior').min(1).max(10).step(0.0001);
+gui.add(material, 'thickness').min(0).max(1).step(0.0001);
 
 /** 
  Lights
