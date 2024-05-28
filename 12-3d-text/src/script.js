@@ -50,11 +50,12 @@ fontLoader.load(
         console.log(textGeometry.computeBoundingBox);
 
         // TODO: Centers 3D Text
-        textGeometry.translate(
-            - (textGeometry.boundingBox.max.x - 0.02) * 0.5,
-            - (textGeometry.boundingBox.max.y - 0.02) * 0.5,
-            - (textGeometry.boundingBox.max.z - 0.03) * 0.5
-        )
+        // textGeometry.translate(
+        //     - (textGeometry.boundingBox.max.x - 0.02) * 0.5,
+        //     - (textGeometry.boundingBox.max.y - 0.02) * 0.5,
+        //     - (textGeometry.boundingBox.max.z - 0.03) * 0.5
+        // )
+        textGeometry.center();
         const textMaterial = new THREE.MeshBasicMaterial({ wireframe: true });
         const text = new THREE.Mesh(textGeometry, textMaterial)
         scene.add(text);
