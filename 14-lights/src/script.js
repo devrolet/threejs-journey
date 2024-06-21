@@ -18,12 +18,15 @@ const scene = new THREE.Scene()
  * Lights
  */
 // Create light with color and intensity as params
-// const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 
 // Create light then add color and intensity separately
-const ambientLight = new THREE.AmbientLight();
-ambientLight.color = new THREE.Color(0xffffff);
-ambientLight.intensity = 1;
+// const ambientLight = new THREE.AmbientLight();
+// ambientLight.color = new THREE.Color(0xffffff);
+// ambientLight.intensity = 1;
+
+// Add ambientLight to GUI
+// gui.add(ambientLight, 'intensity').min(0).max(3).step(0.001);
 
 // Add light to the scene
 scene.add(ambientLight);
