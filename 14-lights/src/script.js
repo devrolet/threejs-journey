@@ -17,6 +17,12 @@ const scene = new THREE.Scene()
 /**
  * Lights
  */
+
+/**
+ * TODO:
+ * Ambient Lights
+ * params(color, intensity)
+ */
 // Create light with color and intensity as params
 const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 
@@ -31,11 +37,26 @@ const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 // Add light to the scene
 scene.add(ambientLight);
 
+/**
+ * TODO:
+ * Directional Lights
+ * params(color, intensity)
+ */
+
 // Directional Light = Similar to sun rays in parallel
 const directionalLight = new THREE.DirectionalLight(0x00fffc, 0.9);
 // Change lighting direction/position
 directionalLight.position.set(1, 0.25, 0);
 scene.add(directionalLight);
+
+/**
+ * TODO:
+ * Hemisphere Lights
+ * params(color (or skyColor), groundColor, intensity)
+ */
+
+const hemisphereLight = new THREE.HemisphereLight(0xff0000, 0x0000ff, 1);
+scene.add(hemisphereLight);
 
 /**
  * Objects
