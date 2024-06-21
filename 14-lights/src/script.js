@@ -31,6 +31,12 @@ const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 // Add light to the scene
 scene.add(ambientLight);
 
+// Directional Light = Similar to sun rays in parallel
+const directionalLight = new THREE.DirectionalLight(0x00fffc, 0.9);
+// Change lighting direction/position
+directionalLight.position.set(1, 0.25, 0);
+scene.add(directionalLight);
+
 /**
  * Objects
  */
