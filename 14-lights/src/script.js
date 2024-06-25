@@ -87,6 +87,11 @@ const spotLight = new THREE.SpotLight(0x78ff00, 4.5, 10, Math.PI * 0.1, 0.25, 1)
 spotLight.position.set(0, 2, 3);
 scene.add(spotLight);
 
+// Rotate spot light
+spotLight.target.position.x = - 0.75;
+// Doesn't work unless you add to scene
+scene.add(spotLight.target);
+
 
 /**
  * Objects
