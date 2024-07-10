@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import GUI from 'lil-gui'
+import { RectAreaLightHelper } from 'three/examples/jsm/helpers/RectAreaLightHelper.js';
 
 /**
  * Base
@@ -46,7 +47,7 @@ scene.add(ambientLight);
 // Directional Light = Similar to sun rays in parallel
 const directionalLight = new THREE.DirectionalLight(0x00fffc, 0.9);
 // Change lighting direction/position
-directionalLight.position.set(1, 0.25, 0);
+directionalLight.position.set(-1, 1, 0);
 scene.add(directionalLight);
 
 /**
@@ -56,7 +57,7 @@ scene.add(directionalLight);
  */
 
 const hemisphereLight = new THREE.HemisphereLight(0xff0000, 0x0000ff, 1);
-scene.add(hemisphereLight);
+// scene.add(hemisphereLight);
 
 /**
  * TODO:
@@ -65,7 +66,7 @@ scene.add(hemisphereLight);
  */
 const pointLight = new THREE.PointLight(0xff9000, 1.5);
 pointLight.position.set(1, - 0.5, 1);
-scene.add(pointLight);
+// scene.add(pointLight);
 
 /**
  * TODO:
@@ -76,7 +77,7 @@ scene.add(pointLight);
 const rectAreaLight = new THREE.RectAreaLight(0x4e00ff, 6, 1, 1);
 rectAreaLight.position.set(- 1.5, 0, 1.5);
 rectAreaLight.lookAt(new THREE.Vector3())
-scene.add(rectAreaLight);
+// scene.add(rectAreaLight);
 
 /**
  * TODO:
@@ -85,12 +86,45 @@ scene.add(rectAreaLight);
  */
 const spotLight = new THREE.SpotLight(0x78ff00, 4.5, 10, Math.PI * 0.1, 0.25, 1);
 spotLight.position.set(0, 2, 3);
-scene.add(spotLight);
+// scene.add(spotLight);
 
 // Rotate spot light
 spotLight.target.position.x = - 0.75;
 // Doesn't work unless you add to scene
-scene.add(spotLight.target);
+// scene.add(spotLight.target);
+
+/* TODO: LIGHT COSTS TO PERFORMANCE
+* MINIMAL: AMBIENT, HEMISPHERE
+* MODERATE: DIRECTIONAL, POINT
+* HIGH: SPOT, RECTAREA
+*/
+
+/* TODO: THREE.JS LIGHT HELPERS
+*
+*/
+// Hemisphere Helper
+const hemisphereLightHelper = new THREE.HemisphereLightHelper(hemisphereLight, 0.2);
+// scene.add(hemisphereLightHelper);
+
+// Directional Helper
+const directionalLightHelper = new THREE.DirectionalLightHelper(directionalLight, 0.2);
+// scene.add(directionalLightHelper);
+
+// Point Helper
+const pointLightHelper = new THREE.PointLightHelper(pointLight, 0.2);
+// scene.add(pointLightHelper);
+
+// Spot Helper
+const spotLightHelper = new THREE.SpotLightHelper(spotLight);
+// scene.add(spotLightHelper);
+
+// window.requestAnimationFrame(() => {
+//     spotLightHelper.update();
+// });
+
+// RectArea Helper
+const rectAreaLightHelper = new RectAreaLightHelper(rectAreaLight);
+// scene.add(rectAreaLightHelper);
 
 
 /**
