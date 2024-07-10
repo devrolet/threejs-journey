@@ -57,7 +57,7 @@ scene.add(directionalLight);
  */
 
 const hemisphereLight = new THREE.HemisphereLight(0xff0000, 0x0000ff, 1);
-// scene.add(hemisphereLight);
+scene.add(hemisphereLight);
 
 /**
  * TODO:
@@ -66,7 +66,7 @@ const hemisphereLight = new THREE.HemisphereLight(0xff0000, 0x0000ff, 1);
  */
 const pointLight = new THREE.PointLight(0xff9000, 1.5);
 pointLight.position.set(1, - 0.5, 1);
-// scene.add(pointLight);
+scene.add(pointLight);
 
 /**
  * TODO:
@@ -77,7 +77,7 @@ pointLight.position.set(1, - 0.5, 1);
 const rectAreaLight = new THREE.RectAreaLight(0x4e00ff, 6, 1, 1);
 rectAreaLight.position.set(- 1.5, 0, 1.5);
 rectAreaLight.lookAt(new THREE.Vector3())
-// scene.add(rectAreaLight);
+scene.add(rectAreaLight);
 
 /**
  * TODO:
@@ -86,7 +86,7 @@ rectAreaLight.lookAt(new THREE.Vector3())
  */
 const spotLight = new THREE.SpotLight(0x78ff00, 4.5, 10, Math.PI * 0.1, 0.25, 1);
 spotLight.position.set(0, 2, 3);
-// scene.add(spotLight);
+scene.add(spotLight);
 
 // Rotate spot light
 spotLight.target.position.x = - 0.75;
@@ -104,27 +104,27 @@ spotLight.target.position.x = - 0.75;
 */
 // Hemisphere Helper
 const hemisphereLightHelper = new THREE.HemisphereLightHelper(hemisphereLight, 0.2);
-// scene.add(hemisphereLightHelper);
+scene.add(hemisphereLightHelper);
 
 // Directional Helper
 const directionalLightHelper = new THREE.DirectionalLightHelper(directionalLight, 0.2);
-// scene.add(directionalLightHelper);
+scene.add(directionalLightHelper);
 
 // Point Helper
 const pointLightHelper = new THREE.PointLightHelper(pointLight, 0.2);
-// scene.add(pointLightHelper);
+scene.add(pointLightHelper);
 
 // Spot Helper
 const spotLightHelper = new THREE.SpotLightHelper(spotLight);
-// scene.add(spotLightHelper);
+scene.add(spotLightHelper);
 
-// window.requestAnimationFrame(() => {
-//     spotLightHelper.update();
-// });
+window.requestAnimationFrame(() => {
+    spotLightHelper.update();
+});
 
 // RectArea Helper
 const rectAreaLightHelper = new RectAreaLightHelper(rectAreaLight);
-// scene.add(rectAreaLightHelper);
+scene.add(rectAreaLightHelper);
 
 
 /**
