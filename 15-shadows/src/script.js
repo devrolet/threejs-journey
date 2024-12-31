@@ -42,9 +42,21 @@ directionalLight.shadow.mapSize.height = 1024;
 directionalLight.shadow.camera.near = 1
 directionalLight.shadow.camera.far = 6
 
+// Amplitude
+directionalLight.shadow.camera.top = 2
+directionalLight.shadow.camera.right = 2
+directionalLight.shadow.camera.bottom = -2
+directionalLight.shadow.camera.left = -2
+
+// Shadow Blur
+// directionalLight.shadow.radius = 10;
+
 
 const directionalLightCameraHelper = new THREE.CameraHelper(directionalLight.shadow.camera);
 
+// Hide the Camera Helper
+directionalLightCameraHelper.visible = false;
+// Adds the Camera Helper to the scene itself (will not see if .visible set to false)
 scene.add(directionalLightCameraHelper);
 
 
@@ -99,6 +111,10 @@ window.addEventListener('resize', () =>
     // Update renderer
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+        // Use a shadow map type
+        renderer.shadowMap.enabled = true
+        // Note: PCFSoftShadowMap does not work with radius values (which blurs the shadow)
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap
 })
 
 /**

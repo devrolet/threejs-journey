@@ -34,3 +34,18 @@ Only 3 types of light support shadows
 PointLight
 DirectionalLight
 SpotLight
+
+Shadows: Amplitude
+
+Has top, right, bottom, and left values
+Reduces the size of the camera view to help fix anomolies 
+
+The smaller the values, the more precise the shadow will be. If it's too small, the shadows will be cropped
+
+Shadow maps 
+THREE.BasicShadowMap - Very performant but lousy quality
+THREE.PCFShadowMap - Less performant but smoother edges (default)
+THREE.PCFSoftShadowMap - Less performant but even softer edges
+THREE.VSMShadowMap - Less performant, more constraints, can have unexpected results
+
+NOTE: Radius values values do not work with PCFSoftShadowMap
