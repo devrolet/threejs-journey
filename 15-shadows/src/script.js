@@ -3,6 +3,16 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import GUI from 'lil-gui'
 
 /**
+ * Textures
+ */
+const textureLoader = new THREE.TextureLoader();
+const bakedShadow = textureLoader.load('/textures/bakedShadow.jpg');
+bakedShadow.colorSpace = THREE.SRGBColorSpace;
+
+console.log('Baked Shadow File: ', bakedShadow);
+
+
+/**
  * Base
  */
 // Debug
@@ -92,7 +102,7 @@ pointLight.position.set(-1, 1, 0);
 scene.add(pointLight);
 
 const pointLightCameraHelper = new THREE.CameraHelper(pointLight.shadow.camera);
-// pointLightCameraHelper.visible = false;
+pointLightCameraHelper.visible = false;
 scene.add(pointLightCameraHelper);
 
 /**
@@ -115,7 +125,9 @@ sphere.castShadow = true;
 
 const plane = new THREE.Mesh(
     new THREE.PlaneGeometry(5, 5),
-    material
+    new THREE.MeshBasicMaterial({
+        map: bakedShadow
+    })
 )
 plane.rotation.x = - Math.PI * 0.5
 plane.position.y = - 0.5
@@ -145,10 +157,6 @@ window.addEventListener('resize', () =>
     // Update renderer
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-        // Use a shadow map type
-        renderer.shadowMap.enabled = true
-        // Note: PCFSoftShadowMap does not work with radius values (which blurs the shadow)
-        renderer.shadowMap.type = THREE.PCFSoftShadowMap
 })
 
 /**
@@ -174,8 +182,13 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
-// Enable Three.js Shadows into your project
-renderer.shadowMap.enabled = true
+// TODO: ALERT: Enable Three.js Shadows into your project
+// TODO: ALERT: Use a shadow map type: The TRUE/FALSE value here controls all shadows
+renderer.shadowMap.enabled = false
+// Note: PCFSoftShadowMap does not work with radius values (which blurs the shadow)
+renderer.shadowMap.type = THREE.PCFSoftShadowMap
+
+
 
 /**
  * Animate
