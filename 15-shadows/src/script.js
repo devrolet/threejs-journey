@@ -33,6 +33,7 @@ scene.add(directionalLight)
 
 directionalLight.castShadow = true
 
+
 console.log(directionalLight.shadow)
 // Use a power of two value 
 directionalLight.shadow.mapSize.width = 1024;
@@ -59,7 +60,24 @@ directionalLightCameraHelper.visible = false;
 // Adds the Camera Helper to the scene itself (will not see if .visible set to false)
 scene.add(directionalLightCameraHelper);
 
+// Spot Light
+const spotLight = new THREE.SpotLight(0xffffff, 3.6, 10, Math.PI * 0.3);
 
+spotLight.castShadow = true;
+spotLight.shadow.mapSize.width = 1024
+spotLight.shadow.mapSize.height = 1024
+spotLight.shadow.camera.fov = 30;
+spotLight.shadow.camera.near = 1
+spotLight.shadow.camera.far = 6
+
+spotLight.position.set(0, 2, 2);
+scene.add(spotLight);
+scene.add(spotLight.target)
+
+const spotLightCameraHelper = new THREE.CameraHelper(spotLight.shadow.camera);
+// Hide the Camera Helper
+spotLightCameraHelper.visible = false;
+scene.add(spotLightCameraHelper)
 
 /**
  * Materials
