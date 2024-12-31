@@ -28,3 +28,9 @@ Render a sphere in front of the camera in a square image
 Use soft brushes on a square image(bg) and paint where you want light reflections
 
 Online Tools
+
+
+Only 3 types of light support shadows
+PointLight
+DirectionalLight
+SpotLight
