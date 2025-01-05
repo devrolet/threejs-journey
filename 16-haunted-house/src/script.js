@@ -43,6 +43,17 @@ floor.rotation.x = - Math.PI * 0.5;
 // Add floor to scene
 scene.add(floor);
 
+// Roof
+const roof = new THREE.Mesh(
+    new THREE.ConeGeometry(3.5, 1.5, 4),
+    new THREE.MeshStandardMaterial()
+)
+// Place the roof on top of the walls
+roof.position.y = 2.5 + 0.75;
+// Rotate roof to right position
+roof.rotation.y = Math.PI * 0.25
+house.add(roof);
+
 /**
  * Lights
  */
