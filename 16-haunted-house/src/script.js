@@ -25,6 +25,17 @@ const sphere = new THREE.Mesh(
 )
 scene.add(sphere)
 
+// Floor
+const floor = new THREE.Mesh(
+    new THREE.PlaneGeometry(20, 20),
+    new THREE.MeshStandardMaterial()
+);
+
+// Rotate the floor to proper space
+floor.rotation.x = - Math.PI * 0.5;
+// Add floor to scene
+scene.add(floor);
+
 /**
  * Lights
  */

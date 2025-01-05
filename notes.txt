@@ -1,4 +1,6 @@
 
+Every THREE.js object must have a Geometry and a Material
+
 GEOMETRIES
 
 Box Geometry
@@ -49,3 +51,14 @@ THREE.PCFSoftShadowMap - Less performant but even softer edges
 THREE.VSMShadowMap - Less performant, more constraints, can have unexpected results
 
 NOTE: Radius values values do not work with PCFSoftShadowMap
+
+HAUNTED HOUSE PROJECT!! 
+
+NOTE ABOUT SETTING A SPECIFIC UNIT RATIO
+EXAMPLE: HOUSE = 1 METER, CITY = 1 KILOMETER, MOUSE 1 CENTIMETER
+A specific unit ratio will help create geometries 
+
+Build a floor 
+- square plane perfectly centered in the scene, 0 on the y-axis is the floor level
+
+Using PBR (Physically Based Rendering) which are compatible with MeshStandardMaterial
