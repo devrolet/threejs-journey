@@ -62,3 +62,6 @@ Build a floor
 - square plane perfectly centered in the scene, 0 on the y-axis is the floor level
 
 Using PBR (Physically Based Rendering) which are compatible with MeshStandardMaterial
+
+Create a Group
+-- used just in case I want to move the entire object '
