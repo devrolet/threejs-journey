@@ -65,3 +65,5 @@ Using PBR (Physically Based Rendering) which are compatible with MeshStandardMat
 
 Create a Group
 -- used just in case I want to move the entire object '
+
+add any objects that are part of the group to the group not scene!!

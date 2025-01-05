@@ -21,6 +21,17 @@ const scene = new THREE.Scene()
 const house = new THREE.Group()
 scene.add(house);
 
+// TODO: add any objects that are part of the group to the group not scene!!
+// Walls
+const walls = new THREE.Mesh(
+    new THREE.BoxGeometry(4, 2.5, 4),
+    new THREE.MeshStandardMaterial()
+)
+
+// Walls will be at the 0 axis so half will be below the y axis, 2.5 from above is dub 1.25
+walls.position.y = 1.25;
+house.add(walls);
+
 // Floor
 const floor = new THREE.Mesh(
     new THREE.PlaneGeometry(20, 20),
