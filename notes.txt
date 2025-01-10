@@ -75,3 +75,20 @@ It's takes a long time to find textures, you'll have to
 -- Download and optimize them
 -- Apply them to the object with a different approach depending on how textures are mapped.
 -- Etc.
+
+Poly Haven Exports (Default options: EXR, JPG, PNG)
+AO (Ambient Occlusion): Prevents the ambient light being applied to crevices
+Diffuse: The actual color
+Displacement: Will move the vertices up and down to create elevations
+Normal: Will fake the orientation to create details. DX and GL are different ways of orienting the normals and we need to go for GL.
+Rough: How smooth or rough the material is 
+
+Some additional options 
+Bump: Like the normal map, but it's a grayscale value (not needed)
+Metal: Defines the metallic parts (may be needed if available)
+
+AO/Rough/Metal: will combine those three maps into one by saving them in different channels (red, green, blue) which is perfect in this case since having fewer textures is good for performance
+
+EXR: Large file with max data
+JPG: Small file size with potential compression artifacts
+PNG: Medium file size, no compression artifacts
