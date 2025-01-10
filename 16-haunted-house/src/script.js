@@ -63,7 +63,7 @@ const door = new THREE.Mesh(
 )
 door.position.y = 1;
 // TODO: THIS IS AN EXAMPLE OF Z-FIGHTING, WHEN OBJECTS OCCUPY THE EXACT SAME SPACE THE GPU IS CONFUSED WHICH SHOULD BE FIRST!!
-door.position.z = 2;
+door.position.z = 2 + 0.01;
 house.add(door);
 
 /**
