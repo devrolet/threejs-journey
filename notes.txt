@@ -92,3 +92,5 @@ AO/Rough/Metal: will combine those three maps into one by saving them in differe
 EXR: Large file with max data
 JPG: Small file size with potential compression artifacts
 PNG: Medium file size, no compression artifacts
+
+Displacement maps will move the actual vertices, it wont fake it like the normal map does.

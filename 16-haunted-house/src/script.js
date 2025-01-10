@@ -29,6 +29,8 @@ const floorARMTexture = textureLoader.load('./floor/coast_sand_rocks_02_1k/coast
 const floorNormalTexture = textureLoader.load('./floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_nor_gl_1k.jpg');
 const floorDisplacementTexture = textureLoader.load('./floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_disp_1k.jpg');
 
+floorColorTexture.colorSpace = THREE.SRGBColorSpace
+
 floorColorTexture.repeat.set(8, 8);
 floorARMTexture.repeat.set(8, 8);
 floorNormalTexture.repeat.set(8, 8);
@@ -65,11 +67,18 @@ house.add(walls);
 
 // Floor
 const floor = new THREE.Mesh(
-    new THREE.PlaneGeometry(20, 20),
+    new THREE.PlaneGeometry(20, 20, 100, 100),
     new THREE.MeshStandardMaterial({
         alphaMap: floorAlphaTexture,
         transparent: true,
-        map: floorColorTexture
+        map: floorColorTexture,
+        aoMap: floorARMTexture,
+        roughnessMap: floorARMTexture,
+        metalnessMap: floorARMTexture,
+        normalMap: floorNormalTexture,
+        displacementMap: floorDisplacementTexture,
+        displacementScale: 0.3, //default is 1,
+        displacementBias: - 0.2
     })
 );
 
@@ -77,6 +86,9 @@ const floor = new THREE.Mesh(
 floor.rotation.x = - Math.PI * 0.5;
 // Add floor to scene
 scene.add(floor);
+
+gui.add(floor.material, 'displacementScale').min(0).max(1).step(0.001).name('floorDisplacementScale');
+gui.add(floor.material, 'displacementBias').min(-1).max(1).step(0.001).name('floorDisplacementBias');
 
 // Roof
 const roof = new THREE.Mesh(
