@@ -46,6 +46,15 @@ floorARMTexture.wrapT = THREE.RepeatWrapping
 floorNormalTexture.wrapT = THREE.RepeatWrapping
 floorDisplacementTexture.wrapT = THREE.RepeatWrapping
 
+// Wall
+const wallColorTexture = textureLoader.load('./wall/castle_brick_broken_06_1k/castle_brick_broken_06_diff_1k.jpg');
+const wallARMTexture = textureLoader.load('./wall/castle_brick_broken_06_1k/castle_brick_broken_06_arm_1k.jpg');
+const wallNormalTexture = textureLoader.load('./wall/castle_brick_broken_06_1k/castle_brick_broken_06_nor_1k.jpg');
+
+wallColorTexture.colorSpace = THREE.SRGBColorSpace
+
+// TODO: Note: repeat, wrapS, and wrapT not needed for this texture, may be needed for others.
+
 
 
 /**
@@ -58,7 +67,13 @@ scene.add(house);
 // Walls
 const walls = new THREE.Mesh(
     new THREE.BoxGeometry(4, 2.5, 4),
-    new THREE.MeshStandardMaterial()
+    new THREE.MeshStandardMaterial({
+        map: wallColorTexture,
+        aoMap: wallARMTexture,
+        roughnessMap: wallARMTexture,
+        metalnessMap: wallARMTexture,
+        normalMap: wallNormalTexture
+    })
 )
 
 // Walls will be at the 0 axis so half will be below the y axis, 2.5 from above is dub 1.25
