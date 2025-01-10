@@ -67,3 +67,11 @@ Create a Group
 -- used just in case I want to move the entire object '
 
 add any objects that are part of the group to the group not scene!!
+
+Adding Textures
+It's takes a long time to find textures, you'll have to
+-- Find a good place with nice textures
+-- Make sure youre allowed to use them
+-- Download and optimize them
+-- Apply them to the object with a different approach depending on how textures are mapped.
+-- Etc.
