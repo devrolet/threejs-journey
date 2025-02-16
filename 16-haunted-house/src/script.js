@@ -32,7 +32,7 @@ const floorDisplacementTexture = textureLoader.load('./floor/coast_sand_rocks_02
 
 floorColorTexture.colorSpace = THREE.SRGBColorSpace
 
-floorColorTexture.repeat.set(8, 8);
+floorColorTexture.repeat.set(10, 10);
 floorARMTexture.repeat.set(8, 8);
 floorNormalTexture.repeat.set(8, 8);
 floorDisplacementTexture.repeat.set(8, 8);
