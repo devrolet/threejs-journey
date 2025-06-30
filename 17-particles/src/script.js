@@ -38,7 +38,8 @@ particlesGeometry.setAttribute(
 
 const particlesMaterial = new THREE.PointsMaterial({
     size: 0.02,
-    sizeAttenuation: true
+    sizeAttenuation: true,
+    color: new THREE.Color("#ff99cc"),
 })
 
 // Points
