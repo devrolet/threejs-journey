@@ -63,7 +63,7 @@ const roofNormalTexture = textureLoader.load('./roof/roof_slates_02_1k/roof_slat
 
 roofColorTexture.colorSpace = THREE.SRGBColorSpace
 
-roofColorTexture.repeat.set(3, 1);
+roofColorTexture.repeat.set(4, 1);
 roofARMTexture.repeat.set(3, 1);
 roofNormalTexture.repeat.set(3, 1);
 

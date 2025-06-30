@@ -17,16 +17,29 @@ const scene = new THREE.Scene()
 /**
  * Textures
  */
-const textureLoader = new THREE.TextureLoader()
+const textureLoader = new THREE.TextureLoader();
+
+/**
+ * Particles
+ */
+const particleGeometry = new THREE.SphereGeometry(1, 32, 32); //course uses SphereBufferGeometry
+const particleMaterial = new THREE.PointsMaterial({
+    size: 0.02,
+    sizeAttenuation: true
+});
+
+// Points
+const particles = new THREE.Points(particleGeometry, particleMaterial);
+scene.add(particles);
 
 /**
  * Test cube
  */
-const cube = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshBasicMaterial()
-)
-scene.add(cube)
+// const cube = new THREE.Mesh(
+//     new THREE.BoxGeometry(1, 1, 1),
+//     new THREE.MeshBasicMaterial()
+// )
+// scene.add(cube)
 
 /**
  * Sizes
